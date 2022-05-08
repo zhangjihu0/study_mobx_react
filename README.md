@@ -1,70 +1,49 @@
-# Getting Started with Create React App
+执行效率
+入口查询耗时比较长
+目前觉得在go上
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+第一阶段的目标是改善用户体验
 
-## Available Scripts
+请求层面 累加3.5秒
 
-In the project directory, you can run:
+打开对话框查询 5-6秒
 
-### `npm start`
+没有弹窗立即查询就是穿透，待生成客户档案
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+执行流程串行变成并行
+去除无用接口
 
-### `npm test`
+个人方案 保存了会更新外边的
+ 
+从用户体验出发，先做对用户感官比较明显
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+会把整单详情。。。方案都加载回来，
 
-### `npm run build`
+monaco-editor
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+declare 能做什么执行ts与js的对比区别
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+monaco-editor 与create-editor-box功能对比 差异其实就是是否使用了eslint 定了变量是否被使用了。等
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+使用 ast，能把 错误提示补上吗  有没有可以在浏览器运行的ast工具 eslint可以在浏览器环境执行吗
 
-### `npm run eject`
+引入declare提供注释，同时用eslint替换默认的ts语法校验，eslint 支持ast 写自定义插件，满足业务需求
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+middleware 
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+公共模块改不动 供应链模块比如  被用的太多了，查看下是否有依赖 
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+优化也是对业务影响最小的，便于测试的。
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+脚手架，引导流程的脚手架比较有用。
 
-### Code Splitting
+1.语法提示，嵌套提示，经过验证在js环境下是有效的，但是超出定范围的不会标红报错，如果把js 文件名修改为ts,超出定义的属性会被红色错误标记。
+2. CreateSandBox引入了eslint 提示 所以，某些属性定义了未被使用等是可以被提示的，通过eslint，会被标记提示，我们可以在monaco-editor上引入eslint提供支持，
+3.eslint 也提供了ast 的能力，可以自定义校验规则满足我们的实际需求。
+目前未写demo验证 eslint在浏览器环境的可行性
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
